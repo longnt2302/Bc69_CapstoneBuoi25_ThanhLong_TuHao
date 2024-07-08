@@ -1,42 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+  <head>
+    <title>Quản lý sản phẩm</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-    </head>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main></main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
+    <!-- Toastify -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.css"
+      integrity="sha512-UiKdzM5DL+I+2YFxK+7TDedVyVm7HMp/bN85NeWMJNYortoll+Nd6PU9ZDrZiaOsdarOyk9egQm6LOJZi36L2g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+    <link rel="stylesheet" href="./css/admin.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="container">
+        <form>
+          <div class="form">
+            <div class="row">
+              <input type="hidden" id="id" value="" />
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Tên sản phẩm</label>
+                  <input type="text" class="form-control" id="name" placeholder="Tên sản phầm" />
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="price" class="form-label">Giá sản phẩm</label>
+                  <input type="text" class="form-control" id="price" placeholder="Giá sản phầm" />
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="backCamera" class="form-label">Camera sau</label>
+                  <input type="text" class="form-control" id="backCamera" placeholder="Camera sau" />
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="frontCamera" class="form-label">Camera trước</label>
+                  <input type="text" class="form-control" id="frontCamera" placeholder="Camera trước" />
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="img" class="form-label">Hình ảnh</label>
+                  <input type="text" class="form-control" id="img" placeholder="Hình ảnh" />
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="type" class="form-label">Hệ điều hành</label>
+                  <select id="type" class="form-select">
+                    <option value="">Chọn hệ điều hành</option>
+                    <option value="ios">IOS</option>
+                    <option value="android">Android</option>
+                  </select>
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-12">
+                <div class="mb-3">
+                  <label for="desc" class="form-label">Mô tả</label>
+                  <textarea class="form-control" id="desc" rows="8"></textarea>
+                </div>
+              </div>
+              <!-- col-6 -->
+              <div class="col-12">
+                <div class="button text-center mt-2 mb-5">
+                  <button
+                    type="button"
+                    disabled="disabled"
+                    id="idUpdateProduct"
+                    class="btn btn-lg btn-primary"
+                    onclick="updateProduct()"
+                  >
+                    Cập nhật sản phẩm
+                  </button>
+                  <button type="button" class="btn btn-lg btn-success" id="idAddProduct" onclick="addProduct()">
+                    Thêm sản phẩm
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- row -->
+          </div>
+        </form>
+        <!-- form -->
+        <div class="list_item">
+          <div class="row">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th scope="col">Giá sản phẩm</th>
+                  <th scope="col">Hệ điều hành</th>
+                  <th scope="col">Mô tả</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id="content"></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- list_item -->
+      </div>
+      <!-- container -->
+    </main>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+      integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Toastify -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.js"
+      integrity="sha512-79j1YQOJuI8mLseq9icSQKT6bLlLtWknKwj1OpJZMdPt2pFBry3vQTt+NZuJw7NSd1pHhZlu0s12Ngqfa371EA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./js/admin.js"></script>
+  </body>
 </html>
