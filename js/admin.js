@@ -12,9 +12,11 @@ const notice = (string) => {
   }).showToast();
 };
 
-function randomXToY(minVal, maxVal) {
-  var randVal = minVal + Math.random() * (maxVal - minVal);
-  return Math.round(randVal);
+function resetForm() {
+  let inputs = document.querySelectorAll("input,select,textarea");
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 }
 
 const getIds = async () => {
@@ -54,9 +56,9 @@ const addProduct = async () => {
     });
     notice("Thêm sản phẩm thành công");
     renderProducts();
-    let inputs = document.querySelectorAll("input,select,textarea");
-    inputs.forEach((input) => {
-      input.value = "";
+    resetForm();
+    document.getElementById("content").scrollIntoView({
+      behavior: "smooth",
     });
   } catch (error) {
     console.log("error: ", error.message);
@@ -105,6 +107,7 @@ const editProduct = async (id) => {
     });
     document.getElementById("idAddProduct").setAttribute("disabled", "disabled");
     document.getElementById("idUpdateProduct").removeAttribute("disabled");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   } catch (error) {
     console.log("error: ", error.message);
   }
@@ -146,7 +149,11 @@ const updateProduct = async () => {
       data: data,
     });
     notice("Cập nhật thành công");
+    resetForm();
     renderProducts();
+    document.getElementById("content").scrollIntoView({
+      behavior: "smooth",
+    });
   } catch (error) {
     console.log("error: ", error.message);
   }
