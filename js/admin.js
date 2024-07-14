@@ -19,6 +19,16 @@ function resetForm() {
   });
 }
 
+const uploadImage = async (url) => {
+  try {
+    const key = "42a6c2cc809de30f28d38bd1eec78446";
+    const image = await axios({
+      method: "post",
+      url: `https://api.imgbb.com/1/upload?key=${key}&image=${url}`,
+    });
+  } catch (error) {}
+};
+
 const getIds = async () => {
   const data = await axios({
     method: "get",
