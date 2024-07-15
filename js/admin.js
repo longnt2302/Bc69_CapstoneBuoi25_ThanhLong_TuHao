@@ -19,28 +19,35 @@ function resetForm() {
   });
 }
 
-const uploadImage = async (url) => {
-  try {
-    const key = "42a6c2cc809de30f28d38bd1eec78446";
-    const image = await axios({
-      method: "post",
-      url: `https://api.imgbb.com/1/upload?key=${key}&image=${url}`,
-    });
-  } catch (error) {}
-};
+// const uploadImage = async (url) => {
+//   try {
+//     const key = "42a6c2cc809de30f28d38bd1eec78446";
+//     const image = await axios({
+//       method: "post",
+//       url: `https://api.imgbb.com/1/upload?key=${key}&image=${url}`,
+//     });
+//     return image;
+//   } catch (error) {
+//     console.log("error: ", error.message);
+//   }
+// };
 
 const getIds = async () => {
-  const data = await axios({
-    method: "get",
-    url: "https://667fb4bdf2cb59c38dc98c1f.mockapi.io/bc69",
-  });
-  const res = data.data;
-  let ids = [];
-  res.forEach((item) => {
-    let { id } = item;
-    ids.push(id);
-  });
-  return ids;
+  try {
+    const data = await axios({
+      method: "get",
+      url: "https://667fb4bdf2cb59c38dc98c1f.mockapi.io/bc69",
+    });
+    const res = data.data;
+    let ids = [];
+    res.forEach((item) => {
+      let { id } = item;
+      ids.push(id);
+    });
+    return ids;
+  } catch (error) {
+    console.log("error: ", error.message);
+  }
 };
 
 const getValueForm = async () => {
@@ -59,6 +66,13 @@ const addProduct = async () => {
   const ids = await getIds();
   data["id"] = ++ids.slice(-1)[0];
   try {
+    const key = "42a6c2cc809de30f28d38bd1eec78446";
+    const image = await axios({
+      method: "post",
+      url: `https://api.imgbb.com/1/upload?key=${key}&image=${data.img}`,
+    });
+    const urlImage = image.data.data.url;
+    data['img'] = urlImage
     const pushData = await axios({
       method: "POST",
       url: "https://667fb4bdf2cb59c38dc98c1f.mockapi.io/bc69",
