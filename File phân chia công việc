@@ -1,0 +1,20 @@
+Các công việc của anh Thanh Long trong bài Capstone này là :
+- Tạo Git
+- Tạo API = MockAPI
+- Xử lý Thêm - Xoá - Sửa sản phẩm
+- Xử lý Upload Ảnh = API lên https://imgbb.com/ và update vào MockAPI của Project của mình
+- Xử lý việc Thêm hoặc Sửa 1 sản phẩm mà không cần user phải thêm hoặc sửa phần ID sản phẩm
+- Merge git của member vào main branch
+- Deploy dự án lên Vercel
+
+Các công việc của dev Hào trong bài capstone này là:
+- Tạo UI Hiển thị danh sách sản phẩm cho khách hàng. 
+- Tạo một dropdown (select) cho phép người dùng filter lọc hiển thị danh sách sản phẩm theo loại
+- Tạo giỏ hàng cho phép người dùng chọn sản phẩm bỏ vào
+- Tạo nút bấm cho phép người dùng truy cập vào giỏ hàng
+- Tạo ra nút tăng giảm số lượng trong giỏ hàng
+- tính tổng giá tiền của tất cả sản phẩm và hiện ra tổng tiền
+- Lưu giỏ hàng vào localstorage , lần sau khi vào trang sẽ load lên lại.
+- Tạo thêm nút bấm cho người dùng nhấn nút thanh toán, clear giỏ hàng
+- tạo thêm nút bấm cho phép người dùng remove sản phẩm ra khỏi giỏ hàng
+- Tạo thêm header cho người dùng truy cập tới trang admin
