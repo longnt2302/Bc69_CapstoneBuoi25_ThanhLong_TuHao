@@ -167,6 +167,15 @@ const updateProduct = async () => {
     const data = await getValueForm();
     const { id } = data;
     delete data.id;
+
+    const key = "42a6c2cc809de30f28d38bd1eec78446";
+    const image = await axios({
+      method: "post",
+      url: `https://api.imgbb.com/1/upload?key=${key}&image=${data.img}`,
+    });
+    const urlImage = image.data.data.url;
+    data["img"] = urlImage;
+    
     const pushData = await axios({
       method: "PUT",
       url: `https://667fb4bdf2cb59c38dc98c1f.mockapi.io/bc69/${id}`,
